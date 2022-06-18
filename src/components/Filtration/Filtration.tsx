@@ -2,17 +2,22 @@ import React, {ChangeEvent, useState} from 'react';
 import style from './Filter.module.css'
 import {FilterParamsType} from "../../App";
 
+//типизация пользовательского фильтра
 type FiltrationType = {
     changeFilter: (newParams: FilterParamsType) => void,
     tableHeaderNames: string[],
     conditionsForFilter: string[],
 }
 
+//компонент пользовательского фильтра на UI.
 export const Filtration = (props: FiltrationType) => {
 
+    //локальный стейт компонента, хук useState
     const [searchValue, setSearchValue] = useState<string>('')
     const [column, setColumn] = useState<string>('1')
     const [condition, setCondition] = useState<string>('1')
+
+    //action - функции обработки событий UI
     const onChangeTitle = (e: ChangeEvent<HTMLSelectElement>) => {
         setColumn(e.currentTarget.value)
     }
@@ -24,8 +29,7 @@ export const Filtration = (props: FiltrationType) => {
         setSearchValue(e.currentTarget.value)
     }
     const sendValueToSearch = () => {
-        // if (searchValue.trim()) {
-            props.changeFilter({column, condition, value: searchValue.trim()})
+        props.changeFilter({column, condition, value: searchValue.trim()})
 
     };
 

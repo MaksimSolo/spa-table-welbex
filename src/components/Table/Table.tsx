@@ -5,12 +5,15 @@ import {StringDataTable} from "./StringDataTable";
 import {InitialStatePaginatorType, StringType} from "../../App";
 import {Paginator} from "../Paginator/Paginator";
 
+
+//типизация компонента Table
 type TableType = {
     initialStatePaginator: InitialStatePaginatorType
     tableHeaderNames: string[],
     stringData: StringType[],
     setCurrentPage: (newCurrentPage: number)=>void
 }
+
 
 export const Table = (props: TableType) => {
 

@@ -5,27 +5,11 @@ import {Header} from "./components/Header/Header";
 import {Filtration} from "./components/Filtration/Filtration";
 import {Table} from "./components/Table/Table";
 
-export type StringType = {
-    id: string,
-    date: string,
-    title: string,
-    quantity: string,
-    distance: string,
-}
-
-export type FilterParamsType = {
-    column: string,
-    condition: string,
-    value: string,
-}
-export type InitialStatePaginatorType = {
-    pagesPortionSize: number
-    rowsPortionSize: number
-    currentPage: number
-}
-
 
 function App() {
+
+    //state.  будет вынесен в отдельный файл и организовано получение данных с сервера "http://www.omdbapi.com/"
+    //сайт предоставляет базу данных о фильмах, в связи с этим смысловые значения столбцов имеют допущения:)))
 
     const tableHeaderNames = ['Дата/Date', 'Название/Title', 'Количество/Quantity', 'Расстояние/Distance'];
     const conditionsForFilter = ['равно/equals', 'меньше/less', 'больше/more', 'содержит/contains']
@@ -37,7 +21,6 @@ function App() {
         rowsPortionSize: 10,
         currentPage: 1,
     })
-
     let stringData = [
         {id: 'tt0108778', date: '22 Sep 1994', title: "Friends", quantity: '22 min', distance: '1994–2004'},
         {id: 'tt0108779', date: '23 Sep 1995', title: "Vriends", quantity: '22 min', distance: '1994–2004'},
@@ -148,16 +131,20 @@ function App() {
         {id: 'tt8808900', date: '29 Sep 1911', title: "vdvsvsdv", quantity: '22 min', distance: '1994–2004'},
     ]
 
+
+    //actions - логика изменения стейта. будет организована с помощью функций (reducers).
     const setCurrentPage = (newCurrentPage: number) => {
         setInitialStatePaginator({
             ...initialStatePaginator, currentPage: newCurrentPage
         })
     }
-
     const changeFilter = (newParams: FilterParamsType) => {
         setFilterParam(newParams)
     }
 
+
+
+    //фильтрация на результате пользовательской настройки в UI.
     const filterRows = (column: string, condition: string, value: string, stringData: StringType[]) => {
         switch (column) {
             case '2': {
@@ -207,6 +194,7 @@ function App() {
         }
     }
 
+    //получаем отфильтрованные строки для отрисовки
     const stringsForRender = filterRows(filterParams.column, filterParams.condition, filterParams.value, stringData)
 
     return (
@@ -223,3 +211,26 @@ function App() {
 }
 
 export default App;
+
+//types
+
+//типизируем полученные строки
+export type StringType = {
+    id: string,
+    date: string,
+    title: string,
+    quantity: string,
+    distance: string,
+}
+//типизируем параметры поьлзовательского фильтра
+export type FilterParamsType = {
+    column: string,
+    condition: string
+    value: string,
+}
+//типизируем стейт данных передаваемых в компонент Paginator
+export type InitialStatePaginatorType = {
+    pagesPortionSize: number
+    rowsPortionSize: number
+    currentPage: number
+}

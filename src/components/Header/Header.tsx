@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Header.module.css'
 
-
+//Основной заголовок
 export const Header = () => {
     return (
         <header className={style.header}>
