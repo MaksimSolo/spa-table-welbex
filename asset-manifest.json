@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/spa-table-welbex/static/css/main.848bdb4f.css",
+    "main.js": "/spa-table-welbex/static/js/main.874a3fc0.js",
+    "static/js/787.a80fdc45.chunk.js": "/spa-table-welbex/static/js/787.a80fdc45.chunk.js",
+    "index.html": "/spa-table-welbex/index.html",
+    "main.848bdb4f.css.map": "/spa-table-welbex/static/css/main.848bdb4f.css.map",
+    "main.874a3fc0.js.map": "/spa-table-welbex/static/js/main.874a3fc0.js.map",
+    "787.a80fdc45.chunk.js.map": "/spa-table-welbex/static/js/787.a80fdc45.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.848bdb4f.css",
+    "static/js/main.874a3fc0.js"
+  ]
+}
