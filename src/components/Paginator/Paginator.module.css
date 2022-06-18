@@ -1,12 +1,13 @@
 .paginator {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+    display: flex;
+    flex-wrap: wrap;
     padding: 5px;
     font-size: 16px;
     background-color: black;
     border: 2px solid #e5e5e5;
     border-radius: 5px;
     text-align: center;
+    justify-content: space-evenly;
 }
 .selectedPage {
     border: 2px solid #e5e5e5;
