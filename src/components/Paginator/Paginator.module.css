@@ -1,0 +1,15 @@
+.paginator {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    padding: 5px;
+    font-size: 16px;
+    background-color: black;
+    border: 2px solid #e5e5e5;
+    border-radius: 5px;
+    text-align: center;
+}
+.selectedPage {
+    border: 2px solid #e5e5e5;
+    font-weight: bold;
+    background-color: #6e0c29;
+}
