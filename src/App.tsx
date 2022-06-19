@@ -202,7 +202,7 @@ function App() {
             <Header/>
             <div className="mainContainer">
                 <Filtration tableHeaderNames={tableHeaderNames} conditionsForFilter={conditionsForFilter}
-                            changeFilter={changeFilter}/>
+                            changeFilter={changeFilter} filterParams={filterParams}/>
                 <Table tableHeaderNames={tableHeaderNames} stringData={stringsForRender}
                        initialStatePaginator={initialStatePaginator} setCurrentPage={setCurrentPage}/>
             </div>

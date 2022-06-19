@@ -7,6 +7,7 @@ type FiltrationType = {
     changeFilter: (newParams: FilterParamsType) => void,
     tableHeaderNames: string[],
     conditionsForFilter: string[],
+    filterParams: FilterParamsType
 }
 
 //компонент пользовательского фильтра на UI.
@@ -32,6 +33,12 @@ export const Filtration = (props: FiltrationType) => {
         props.changeFilter({column, condition, value: searchValue.trim()})
 
     };
+    const resetAllValue = () => {
+        setColumn('1')
+        setCondition('1')
+        setSearchValue('')
+        props.changeFilter({column:'1', condition:'1', value:''})
+    }
 
     return <div className={style.filter}>
         <div>
@@ -57,6 +64,14 @@ export const Filtration = (props: FiltrationType) => {
             <div>Введите значение для поиска / Enter a search value</div>
             <input value={searchValue} onChange={changeSearchValue} onBlur={sendValueToSearch}
                    placeholder={'enter search value'} type="text" autoFocus={true}/>
+        </div>
+        <div>
+            <div>Чтобы применить параметры нажмите Apply</div>
+            <button onClick={sendValueToSearch}>Apply</button>
+        </div>
+        <div>
+            <div>Для сброса нажмите Reset</div>
+            <button onClick={resetAllValue}>Reset</button>
         </div>
     </div>
 };
